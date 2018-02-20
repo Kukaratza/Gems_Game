@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gems Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style/style.css">
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="jumbotron vertical-center">
+            <h1>Crystals Collector Game</h1>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Instructions</h3>
+            </div>
+            <div class="panel-body">
+                <p>1. Click the crystals. </p>
+                <p>2. Don't go over the score.</p>
+                <p>3. Win.</p>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Score to beat:
+
+            </div>
+            <div class="panel-body">
+                <p>
+                    <span id="scoreToBeat"></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-body panel-default">
+            <div class="row">
+                <div class="col-6">
+                    Wins:
+                    <span id="winsCount">0</span>
+                </div>
+                <div class="col-6">
+                    Loses:
+                    <span id="losesCount">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="assets/style/sapphire.png" class="img-saphire" alt="Saphire" height="80px" width="80px">
+                <img src="assets/style/ruby.png" class="img ruby" alt="Ruby" height="80px" width="80px">
+                <img src="assets/style/diamond.png" class="img-diamond" alt="Diamond" height="80px" width="80px">
+                <img src="assets/style/amethyst.png" class="img-amethyst" alt="Amethyst" height="80px" width="80px">
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                My total Score:
+                <span id="totalScore">0</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Code Starts Here -->
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Assign variables
+            let scoreToBeat = 0;
+            let wins = 0;
+            let loses = 0;
+            let totalScore = 0;
+
+            // Generate Random Number and assign it to a variable between 19 and 120 [ () * (max - min + 1)) + min];
+            let randNum = Math.floor((Math.random() * 102) + 19);
+            console.log(randNum); //sanity test
+
+            // Display random number in "#scoreToBeat" ID.
+            $("#scoreToBeat").text(randNum);
+
+            // Generate a random number for the 1st gem that should be bwteen 1 and 12.
+
+            let saphireNum = Math.floor((Math.random() * 12) + 1);
+            console.log(saphireNum);
+
+            // Create an on.click event that triggers and adds the "saphireNum" to the totalScore.
+            $(".img-saphire").on("click", function () {
+            //sanity check it works!
+            totalScore = saphireNum;
+            console.log(totalScore);
+            
+            // Once the 1st gem is clicked add the "hidden" number to "totalScore"
+            $("#totalScore").text(saphireNum);
+
+            });
+
+            // If totalScore === scoreToBeat add +1 to winsCoount
+            // else +1 to losesCount
+        });
+    </script>
+
+</body>
+
+</html>

@@ -55,10 +55,10 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <img src="assets/style/sapphire.png" class="img-saphire" alt="Saphire" height="80px" width="80px">
-                <img src="assets/style/ruby.png" class="img ruby" alt="Ruby" height="80px" width="80px">
-                <img src="assets/style/diamond.png" class="img-diamond" alt="Diamond" height="80px" width="80px">
-                <img src="assets/style/amethyst.png" class="img-amethyst" alt="Amethyst" height="80px" width="80px">
+                <img src="assets/style/sapphire.png" class="img-saphire crystals" alt="Saphire" height="80px" width="80px">
+                <img src="assets/style/ruby.png" class="img-ruby crystals" alt="Ruby" height="80px" width="80px">
+                <img src="assets/style/diamond.png" class="img-diamond crystals" alt="Diamond" height="80px" width="80px">
+                <img src="assets/style/amethyst.png" class="img-amethyst crystals" alt="Amethyst" height="80px" width="80px">
             </div>
         </div>
 
@@ -76,39 +76,70 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript">
+
+        let totalScore = 0;
+
         $(document).ready(function () {
 
             // Assign variables
             let scoreToBeat = 0;
             let wins = 0;
             let loses = 0;
-            let totalScore = 0;
 
-            // Generate Random Number and assign it to a variable between 19 and 120 [ () * (max - min + 1)) + min];
+
+            // Generate Random Number and assign it to a variable between 19 and 120 formula:[ () * (max - min + 1)) + min];
             let randNum = Math.floor((Math.random() * 102) + 19);
-            console.log(randNum); //sanity test
+            console.log(randNum); //sanity test: works!
 
             // Display random number in "#scoreToBeat" ID.
             $("#scoreToBeat").text(randNum);
 
-            // Generate a random number for the 1st gem that should be bwteen 1 and 12.
-
+            // Generate a random number for all gems that should be bwteen 1 and 12.
             let saphireNum = Math.floor((Math.random() * 12) + 1);
             console.log(saphireNum);
+            let rubyNum = Math.floor((Math.random() * 12) + 1);
+            console.log(rubyNum);
+            let diamondNum = Math.floor((Math.random() * 12) + 1);
+            console.log(diamondNum);
+            let amethystNum = Math.floor((Math.random() * 12) + 1);
+            console.log(amethystNum);
 
             // Create an on.click event that triggers and adds the "saphireNum" to the totalScore.
-            $(".img-saphire").on("click", function () {
-            //sanity check it works!
-            totalScore = saphireNum;
-            console.log(totalScore);
-            
-            // Once the 1st gem is clicked add the "hidden" number to "totalScore"
-            $("#totalScore").text(saphireNum);
+            $(".crystals").on("click", function () {
 
+                if ($(this).hasClass(".img-saphire")); 
+                    totalScore += saphireNum;
+                    console.log(totalScore);
+                    //Once the 1st gem is clicked, add the "hidden" number to "totalScore"
+                    $("#totalScore").text(totalScore);
+                
+                
+
+
+
+                //--------------------------------------------------------  
+                //this works so far, will try something else before this  
+                //--------------------------------------------------------
+
+                //sanity check: works!
+                // totalScore += saphireNum; //add on everyy click the "hidden" number to totalScore.
+                // totalScore += rubyNum;
+                // console.log(totalScore); //sanity check: works!
+
+                // Once the 1st gem is clicked, add the "hidden" number to "totalScore"
+                // $("#totalScore").text(totalScore);
+
+                // If totalScore === scoreToBeat add +1 to "winsCoount
+                // if (totalScore === randNum) {
+                //     wins++;
+                //     $("#winsCount").text(wins);
+
+                // else +1 to losesCount
+                // } else if (totalScore > randNum) {
+                //     loses++;
+                //     $("#losesCount").text(loses);
+                // }
             });
-
-            // If totalScore === scoreToBeat add +1 to winsCoount
-            // else +1 to losesCount
         });
     </script>
 

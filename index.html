@@ -18,9 +18,9 @@
             <h1>Crystals Collector Game</h1>
         </div>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title">Instructions</h3>
+                <h3 class="panel-title ">Instructions</h3>
             </div>
             <div class="panel-body">
                 <p>1. Click the crystals. </p>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-primary">
             <div class="panel-heading">Score to beat:
 
             </div>
@@ -40,8 +40,8 @@
             </div>
         </div>
 
-        <div class="panel panel-body panel-default">
-            <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body bg-danger">
                 <div class="col-6">
                     Wins:
                     <span id="winsCount">0</span>
@@ -53,17 +53,17 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <img src="assets/style/sapphire.png" class="img-saphire crystals" alt="Saphire" height="80px" width="80px">
-                <img src="assets/style/ruby.png" class="img-ruby crystals" alt="Ruby" height="80px" width="80px">
-                <img src="assets/style/diamond.png" class="img-diamond crystals" alt="Diamond" height="80px" width="80px">
-                <img src="assets/style/amethyst.png" class="img-amethyst crystals" alt="Amethyst" height="80px" width="80px">
+        <div class="panel panel-default" id="no">
+            <div class="panel-body border-0">
+                <img src="assets/style/sapphire.png" id="img-saphire" class="crystals" alt="Saphire" height="80px" width="80px">
+                <img src="assets/style/ruby.png" id="img-ruby" class="crystals" alt="Ruby" height="80px" width="80px">
+                <img src="assets/style/diamond.png" id="img-diamond" class="crystals" alt="Diamond" height="80px" width="80px">
+                <img src="assets/style/amethyst.png" id="img-amethyst" class="crystals" alt="Amethyst" height="80px" width="80px">
             </div>
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-body">
+            <div class="panel-body bg-info">
                 My total Score:
                 <span id="totalScore">0</span>
             </div>
@@ -81,65 +81,80 @@
 
         $(document).ready(function () {
 
-            // Assign variables
+            // Assign GLOBAL variables
             let scoreToBeat = 0;
             let wins = 0;
             let loses = 0;
+            let randNum;
+            var gemValues;
+           
+
+            //RandNum function
+            function randNumber() {
+                return Math.floor((Math.random() * 102) + 19);
+            }
 
 
-            // Generate Random Number and assign it to a variable between 19 and 120 formula:[ () * (max - min + 1)) + min];
-            let randNum = Math.floor((Math.random() * 102) + 19);
-            console.log(randNum); //sanity test: works!
+            // Start Function
+            function start() {
 
-            // Display random number in "#scoreToBeat" ID.
-            $("#scoreToBeat").text(randNum);
+                // Generate Random Number and assign it to a variable between 19 and 120 formula:[ () * (max - min + 1)) + min];
+                randNum = randNumber()
+                console.log(randNum); //sanity test: works!
 
-            // Generate a random number for all gems that should be bwteen 1 and 12.
-            let saphireNum = Math.floor((Math.random() * 12) + 1);
-            console.log(saphireNum);
-            let rubyNum = Math.floor((Math.random() * 12) + 1);
-            console.log(rubyNum);
-            let diamondNum = Math.floor((Math.random() * 12) + 1);
-            console.log(diamondNum);
-            let amethystNum = Math.floor((Math.random() * 12) + 1);
-            console.log(amethystNum);
+                // Display random number in "#scoreToBeat" ID.
+                $("#scoreToBeat").text(randNum);
+
+                // Generate a random number for all gems that should be bwteen 1 and 12.
+                let saphireNum = Math.floor((Math.random() * 12) + 1);
+                console.log(saphireNum);
+                let rubyNum = Math.floor((Math.random() * 12) + 1);
+                console.log(rubyNum);
+                let diamondNum = Math.floor((Math.random() * 12) + 1);
+                console.log(diamondNum);
+                let amethystNum = Math.floor((Math.random() * 12) + 1);
+                console.log(amethystNum);
+                totalScore = 0;
+                $("#totalScore").text(totalScore);
+                return [saphireNum, rubyNum, diamondNum, amethystNum];
+                
+
+            }
 
             // Create an on.click event that triggers and adds the "saphireNum" to the totalScore.
             $(".crystals").on("click", function () {
 
-                if ($(this).hasClass(".img-saphire")); 
-                    totalScore += saphireNum;
-                    console.log(totalScore);
-                    //Once the 1st gem is clicked, add the "hidden" number to "totalScore"
-                    $("#totalScore").text(totalScore);
-                
-                
+                // if .this "click" event .is(has) id "img-saphire"
+                if ($(this).is("#img-saphire")) {
+                    //add the number gen by saphire to totalScore, rinse and repeat...
+                    totalScore += gemValues[0];
+                } else if ($(this).is("#img-ruby")) {
+                    totalScore += gemValues[1];
+                } else if ($(this).is("#img-diamond")) {
+                    totalScore += gemValues[2];
+                } else if ($(this).is("#img-amethyst")) {
+                    totalScore += gemValues[3];
+                }
 
-
-
-                //--------------------------------------------------------  
-                //this works so far, will try something else before this  
-                //--------------------------------------------------------
-
-                //sanity check: works!
-                // totalScore += saphireNum; //add on everyy click the "hidden" number to totalScore.
-                // totalScore += rubyNum;
-                // console.log(totalScore); //sanity check: works!
-
-                // Once the 1st gem is clicked, add the "hidden" number to "totalScore"
-                // $("#totalScore").text(totalScore);
+                $("#totalScore").text(totalScore);
+                console.log(totalScore); //sanity check: works!
 
                 // If totalScore === scoreToBeat add +1 to "winsCoount
-                // if (totalScore === randNum) {
-                //     wins++;
-                //     $("#winsCount").text(wins);
+                if (totalScore === randNum) {
+                    wins++;
+                    $("#winsCount").text(wins);
+                    gemValues = start();
 
-                // else +1 to losesCount
-                // } else if (totalScore > randNum) {
-                //     loses++;
-                //     $("#losesCount").text(loses);
-                // }
+                    // else +1 to losesCount
+                } else if (totalScore > randNum) {
+                    loses++;
+                    $("#losesCount").text(loses);
+                    gemValues = start();
+                }
             });
+            gemValues = start();
+            console.log(gemValues);
+
         });
     </script>
 

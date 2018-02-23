@@ -5,27 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gems Game</title>
+    <title>Crystals Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="Assets/css/reset.css">
 </head>
 
 <body>
     <div class="container text-center">
         <div class="jumbotron vertical-center">
-            <h1>Crystals Collector Game</h1>
+            <h1 id="title">Crystals Collector Game</h1>
         </div>
 
-        <div class="panel panel-default panel-success">
+        <div class="panel panel-default panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title ">Instructions</h3>
             </div>
-            <div class="panel-body">
-                <p>1. Click the crystals. </p>
-                <p>2. Don't go over the score.</p>
-                <p>3. Win.</p>
+            <div class="panel-body" id="instructions">
+                <p>Every Gem has a number "hidden" assign to it. </p>
+                <p>By clicking the gems you will generate a number.</p>
+                <p>The objective it's to match your Score to the "Score to Beat".</p>
             </div>
         </div>
 
@@ -42,6 +45,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body bg-danger">
+                
                 <div class="col-6">
                     Wins:
                     <span id="winsCount">0</span>
@@ -55,10 +59,10 @@
 
         <div class="panel panel-default" id="no">
             <div class="panel-body border-0">
-                <img src="assets/style/sapphire.png" id="img-saphire" class="crystals" alt="Saphire" height="80px" width="80px">
-                <img src="assets/style/ruby.png" id="img-ruby" class="crystals" alt="Ruby" height="80px" width="80px">
-                <img src="assets/style/diamond.png" id="img-diamond" class="crystals" alt="Diamond" height="80px" width="80px">
-                <img src="assets/style/amethyst.png" id="img-amethyst" class="crystals" alt="Amethyst" height="80px" width="80px">
+                <img src="assets/images/sapphire.png" id="img-saphire" class="crystals" alt="Saphire" height="80px" width="80px">
+                <img src="assets/images/ruby.png" id="img-ruby" class="crystals" alt="Ruby" height="80px" width="80px">
+                <img src="assets/images/diamond.png" id="img-diamond" class="crystals" alt="Diamond" height="80px" width="80px">
+                <img src="assets/images/amethyst.png" id="img-amethyst" class="crystals" alt="Amethyst" height="80px" width="80px">
             </div>
         </div>
 
@@ -70,94 +74,7 @@
         </div>
 
     </div>
-
-    <!-- Code Starts Here -->
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-
-        let totalScore = 0;
-
-        $(document).ready(function () {
-
-            // Assign GLOBAL variables
-            let scoreToBeat = 0;
-            let wins = 0;
-            let loses = 0;
-            let randNum;
-            var gemValues;
-           
-
-            //RandNum function
-            function randNumber() {
-                return Math.floor((Math.random() * 102) + 19);
-            }
-
-
-            // Start Function
-            function start() {
-
-                // Generate Random Number and assign it to a variable between 19 and 120 formula:[ () * (max - min + 1)) + min];
-                randNum = randNumber()
-                console.log(randNum); //sanity test: works!
-
-                // Display random number in "#scoreToBeat" ID.
-                $("#scoreToBeat").text(randNum);
-
-                // Generate a random number for all gems that should be bwteen 1 and 12.
-                let saphireNum = Math.floor((Math.random() * 12) + 1);
-                console.log(saphireNum);
-                let rubyNum = Math.floor((Math.random() * 12) + 1);
-                console.log(rubyNum);
-                let diamondNum = Math.floor((Math.random() * 12) + 1);
-                console.log(diamondNum);
-                let amethystNum = Math.floor((Math.random() * 12) + 1);
-                console.log(amethystNum);
-                totalScore = 0;
-                $("#totalScore").text(totalScore);
-                return [saphireNum, rubyNum, diamondNum, amethystNum];
-                
-
-            }
-
-            // Create an on.click event that triggers and adds the "saphireNum" to the totalScore.
-            $(".crystals").on("click", function () {
-
-                // if .this "click" event .is(has) id "img-saphire"
-                if ($(this).is("#img-saphire")) {
-                    //add the number gen by saphire to totalScore, rinse and repeat...
-                    totalScore += gemValues[0];
-                } else if ($(this).is("#img-ruby")) {
-                    totalScore += gemValues[1];
-                } else if ($(this).is("#img-diamond")) {
-                    totalScore += gemValues[2];
-                } else if ($(this).is("#img-amethyst")) {
-                    totalScore += gemValues[3];
-                }
-
-                $("#totalScore").text(totalScore);
-                console.log(totalScore); //sanity check: works!
-
-                // If totalScore === scoreToBeat add +1 to "winsCoount
-                if (totalScore === randNum) {
-                    wins++;
-                    $("#winsCount").text(wins);
-                    gemValues = start();
-
-                    // else +1 to losesCount
-                } else if (totalScore > randNum) {
-                    loses++;
-                    $("#losesCount").text(loses);
-                    gemValues = start();
-                }
-            });
-            gemValues = start();
-            console.log(gemValues);
-
-        });
-    </script>
-
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
 </html>

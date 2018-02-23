@@ -80,8 +80,8 @@ $(".crystals").on("click", function () {
     if (totalScore === randNum) {
         wins++;
         $("#winsCount").text(wins);
+    //    alert("You are a Winner!")
         gemValues = start();
-        alert("You are a Winner!")
 
         // else +1 to losesCount
     } else if (totalScore > randNum) {

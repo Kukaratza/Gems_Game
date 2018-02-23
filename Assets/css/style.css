@@ -15,10 +15,27 @@ body {
     text-shadow: 5px 8px 1px rgb(0, 35, 46);
 }
 
-#instructions {
-   background-color: rgb(196, 218, 228);
-}
-
 #no{
     border:#fff;
+}
+
+#beatScore {
+    padding: 0px;
+    margin-right: 46px;
+    height: 200px;
+}
+
+#myTotalScore {
+    padding: 0px;
+    margin-right: 46px;
+    height: 200px;
+}
+
+#wlScore {
+    padding: 0px;
+    height: 200px;
+}
+
+#z{
+    font-size: 120px;    
 }

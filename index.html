@@ -17,61 +17,84 @@
 
 <body>
     <div class="container text-center">
-        <div class="jumbotron vertical-center">
-            <h1 id="title">Crystals Collector Game</h1>
-        </div>
-
-        <div class="panel panel-default panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title ">Instructions</h3>
-            </div>
-            <div class="panel-body" id="instructions">
-                <p>Every Gem has a number "hidden" assign to it. </p>
-                <p>By clicking the gems you will generate a number.</p>
-                <p>The objective it's to match your Score to the "Score to Beat".</p>
-            </div>
-        </div>
-
-        <div class="panel panel-default panel-primary">
-            <div class="panel-heading">Score to beat:
-
-            </div>
-            <div class="panel-body">
-                <p>
-                    <span id="scoreToBeat"></span>
-                </p>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-body bg-danger">
-                
-                <div class="col-6">
-                    Wins:
-                    <span id="winsCount">0</span>
-                </div>
-                <div class="col-6">
-                    Loses:
-                    <span id="losesCount">0</span>
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron vertical-center">
+                    <h1 id="title">Crystals Collector Game</h1>
                 </div>
             </div>
         </div>
 
-        <div class="panel panel-default" id="no">
-            <div class="panel-body border-0">
-                <img src="assets/images/sapphire.png" id="img-saphire" class="crystals" alt="Saphire" height="80px" width="80px">
-                <img src="assets/images/ruby.png" id="img-ruby" class="crystals" alt="Ruby" height="80px" width="80px">
-                <img src="assets/images/diamond.png" id="img-diamond" class="crystals" alt="Diamond" height="80px" width="80px">
-                <img src="assets/images/amethyst.png" id="img-amethyst" class="crystals" alt="Amethyst" height="80px" width="80px">
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Instructions</h3>
+                    </div>
+                    <div class="panel-body" id="instructions">
+                        <p>Every Gem has a number "hidden" assign to it. </p>
+                        <p>By clicking the gems you will generate a number.</p>
+                        <p>The objective it's to match your Score to the "Score to Beat".</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-body bg-info">
-                My total Score:
-                <span id="totalScore">0</span>
+        <!-- Here is where 1st row start after instructions -->
+
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default panel-primary col-lg-3" id="beatScore">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Score to Beat:</h3>
+                    </div>
+                    <div class="panel-body" id="z">
+                        <p>
+                            <span id="scoreToBeat">0</span>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default panel-primary col-lg-5" id="myTotalScore">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">My total Score:</h3>
+                    </div>
+                    <div class="panel-body" id="z">
+                        <p>
+                            <span id="totalScore">0</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel col-lg-3" id="wlScore">
+                    <div class="panel-heading">
+                        <div class="col-6">
+                            Wins:
+                            <span id="winsCount">0</span>
+                        </div>
+                        <div class="col-6">
+                            Loses:
+                            <span id="losesCount">0</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default" id="no">
+                    <div class="panel-body border-0">
+                        <img src="assets/images/sapphire.png" id="img-saphire" class="crystals" alt="Saphire" height="80px" width="80px">
+                        <img src="assets/images/ruby.png" id="img-ruby" class="crystals" alt="Ruby" height="80px" width="80px">
+                        <img src="assets/images/diamond.png" id="img-diamond" class="crystals" alt="Diamond" height="80px" width="80px">
+                        <img src="assets/images/amethyst.png" id="img-amethyst" class="crystals" alt="Amethyst" height="80px" width="80px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
     <script type="text/javascript" src="assets/javascript/game.js"></script>

@@ -79,16 +79,21 @@ $(".crystals").on("click", function () {
     // If totalScore === scoreToBeat add +1 to "winsCoount
     if (totalScore === randNum) {
         wins++;
-        $("#winsCount").text(wins);
-    //    alert("You are a Winner!")
-        gemValues = start();
+        $(this).unbind('click');
+        setTimeout(() => {
+            $("#winsCount").text(wins);
+            gemValues = start();
+        }, 1500);
 
         // else +1 to losesCount
     } else if (totalScore > randNum) {
         loses++;
-        $("#losesCount").text(loses);
-        gemValues = start();
-    //    alert("LOOOOOOOOOOOOOOSER!!!!!!!!!!!!!!!!!!")
+        $(this).unbind('click');
+        setTimeout(() => {
+            $("#losesCount").text(loses);
+            gemValues = start();
+        }, 1000);
+
     }
 });
 gemValues = start();

@@ -31,7 +31,7 @@ function start() {
 
     // let saphireNum = Math.floor((Math.random() * 12) + 1);
     // console.log(saphireNum);
-    // let rubyNum = Math.floor((Math.random() * 12) + 1);
+    // let rubyNum = Math.floor((Math.random() * 12) + 1);jhsdjsyurrfeh5ewyrchfykgxyjfhgf  vcmcn cnxccbznsdn bxmzbmbnbnasmnxmabxmabbscdhgsjxhsghxasghnxagmdhgwhxhwdvhgh
     // console.log(rubyNum);
     // let diamondNum = Math.floor((Math.random() * 12) + 1);
     // console.log(diamondNum);
@@ -88,7 +88,7 @@ $(".crystals").on("click", function () {
         loses++;
         $("#losesCount").text(loses);
         gemValues = start();
-        alert("LOOOOOOOOOOOOOOSER!!!!!!!!!!!!!!!!!!")
+    //    alert("LOOOOOOOOOOOOOOSER!!!!!!!!!!!!!!!!!!")
     }
 });
 gemValues = start();

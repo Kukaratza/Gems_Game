@@ -16,7 +16,8 @@ body {
 }
 
 #no{
-    border:#fff;
+    border: solid 5px rgb(72, 176, 224);
+    background-color: lightblue;
 }
 
 #beatScore {
@@ -34,8 +35,20 @@ body {
 #wlScore {
     padding: 0px;
     height: 200px;
+    font-size: 50px;
+    padding-top: 30px;
+    border: solid 5px rgb(72, 176, 224);
+    box-shadow: 10px 10px rgb(3, 71, 83);
 }
 
 #z{
     font-size: 120px;    
+}
+
+#winsText {
+    color: green;
+}
+
+#losesText {
+    color: red;
 }
